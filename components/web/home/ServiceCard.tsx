@@ -1,0 +1,62 @@
+"use client";
+import Image from "next/image";
+import React, { useRef, useState } from "react";
+
+export default function ServiceCard({
+  service,
+  index,
+}: {
+  service: {
+    id: number;
+    title: string;
+    description: string;
+    icon: string;
+  };
+  index: number;
+}) {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [visible, setVisible] = useState(false);
+
+  const divRef = useRef<HTMLDivElement | null>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current) return;
+
+    const bounds = divRef.current.getBoundingClientRect();
+    setPosition({ x: e.clientX - bounds.left, y: e.clientY - bounds.top });
+  };
+
+  return (
+    <div
+      className="relative overflow-hidden max-w-lg m-2 sm:m-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-2xl shadow-gray-100 dark:shadow-white/10"
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+      ref={divRef}
+      onMouseMove={handleMouseMove}
+    >
+      <div
+        className={`pointer-events-none blur-2xl rounded-full bg-linear-to-r from-blue-500 via-indigo-500 to-purple-500 w-75 h-75 absolute z-0 transition-opacity duration-500 ${visible ? "opacity-70" : "opacity-0"}`}
+        style={{ top: position.y - 150, left: position.x - 150 }}
+      ></div>
+
+      <div className="flex flex-col  sm:flex-row items-center gap-6 sm:gap-10 md:gap-6 lg:gap-10 p-8 hover:p-7.5 hover:m-0.5 transition-all rounded-[10px] bg-white dark:bg-gray-900 z-10 relative">
+        <div className="bg-gray-100 dark:bg-gray-700 rounded-full">
+          <Image
+            src={`/images/${service.icon}`}
+            height={96}
+            width={96}
+            unoptimized
+            loading="eager"
+            className="max-w-24 bg-white dark:bg-gray-900 rounded-full m-2"
+            alt="Icon"
+          />
+        </div>
+
+        <div className="flex-1 text-center sm:text-start">
+          <h3 className="font-bold">{service.title}</h3>
+          <h3 className="text-sm mt-2">{service.description}</h3>
+        </div>
+      </div>
+    </div>
+  );
+}
