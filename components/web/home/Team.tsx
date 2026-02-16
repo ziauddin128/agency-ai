@@ -52,7 +52,10 @@ export default function Team() {
     },
   ];
   return (
-    <div className="custom-container flex flex-col items-center gap-7 pt-20 md:pt-30 text-gray-700 dark:text-white relative">
+    <div
+      id="team"
+      className="custom-container flex flex-col items-center gap-7 pt-20 md:pt-30 text-gray-700 dark:text-white relative"
+    >
       <Title
         title="Meet the team"
         desc="A passionate team of digital experts dedicated to your brands success."

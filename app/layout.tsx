@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import toast, { Toaster } from "react-hot-toast";
 
 const manRope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
@@ -21,7 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <link rel="icon" href="/images/favicon.ico" sizes="any" />
-      <body className={manRope.className}>{children}</body>
+      <body className={manRope.className}>
+        <Toaster />
+        {children}
+      </body>
     </html>
   );
 }

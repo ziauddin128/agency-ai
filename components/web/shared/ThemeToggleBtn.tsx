@@ -40,7 +40,7 @@ export default function ThemeToggleBtn({
         }
         height={35}
         width={35}
-        className="h-8.75 w-8.75 border border-gray-500 rounded-full p-1.5"
+        className="cursor-pointer h-8.75 w-8.75 border border-gray-500 rounded-full p-1.5"
         loading="eager"
         unoptimized
         alt="Theme"

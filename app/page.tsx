@@ -1,5 +1,7 @@
 "use client";
 
+import ContactUs from "@/components/web/home/ContactUs";
+import Footer from "@/components/web/home/Footer";
 import Hero from "@/components/web/home/Hero";
 import OurWork from "@/components/web/home/OurWork";
 import Services from "@/components/web/home/Services";
@@ -19,6 +21,8 @@ export default function Home() {
       <Services />
       <OurWork />
       <Team />
+      <ContactUs />
+      <Footer theme={theme} />
     </div>
   );
 }
