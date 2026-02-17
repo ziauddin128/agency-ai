@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ThemeToggleBtn from "./ThemeToggleBtn";
+import { motion } from "motion/react";
 
 export default function Navbar({
   theme,
@@ -14,7 +15,12 @@ export default function Navbar({
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex items-center justify-between px-4 sm:px-12 lg:px-24 xl:px-40 py-4 sticky top-0 z-20 backdrop-blur-xl font-medium bg-white/50 dark:bg-gray-900/70">
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="flex items-center justify-between px-4 sm:px-12 lg:px-24 xl:px-40 py-4 sticky top-0 z-20 backdrop-blur-xl font-medium bg-white/50 dark:bg-gray-900/70"
+    >
       <Image
         src={theme === "light" ? "/images/logo.svg" : "/images/logo_dark.svg"}
         height={140}
@@ -101,6 +107,6 @@ export default function Navbar({
           />
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }

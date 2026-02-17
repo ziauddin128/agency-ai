@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
+import { motion } from "motion/react";
 
 export default function ServiceCard({
   service,
@@ -27,7 +28,11 @@ export default function ServiceCard({
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.2 }}
+      viewport={{ once: true }}
       className="relative overflow-hidden max-w-lg m-2 sm:m-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-2xl shadow-gray-100 dark:shadow-white/10"
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
@@ -57,6 +62,6 @@ export default function ServiceCard({
           <h3 className="text-sm mt-2">{service.description}</h3>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

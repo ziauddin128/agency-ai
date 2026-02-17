@@ -1,10 +1,17 @@
 import React from "react";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 export default function Hero() {
   return (
     <div className="custom-container flex flex-col items-center gap-6 py-20  text-center w-full overflow-hidden text-gray-700 dark:text-white">
-      <div className="inline-flex gap-2 items-center border border-gray-300 p-1.5 pr-4 rounded-full">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.7 }}
+        viewport={{ once: true }}
+        className="inline-flex gap-2 items-center border border-gray-300 p-1.5 pr-4 rounded-full"
+      >
         <Image
           src="/images/group_profile.png"
           height={20}
@@ -15,22 +22,40 @@ export default function Hero() {
           className="w-20 object-contain"
         />
         <p className="text-xs font-medium">Trusted by 10k+ people</p>
-      </div>
+      </motion.div>
 
-      <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-[84px] font-medium xl:leading-23.75 max-w-5xl">
+      <motion.h1
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        viewport={{ once: true }}
+        className="text-4xl sm:text-5xl md:text-6xl xl:text-[84px] font-medium xl:leading-23.75 max-w-5xl"
+      >
         Turning imagination into{" "}
         <span className="bg-linear-to-r from-[#5044E5] to-[#4d8cea] bg-clip-text text-transparent">
           digital
         </span>{" "}
         impact.
-      </h1>
+      </motion.h1>
 
-      <p className="text-sm sm:text-lg font-medium text-gray-500 dark:text-white/75 max-w-4/5 sm:max-w-lg pb-3">
+      <motion.p
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1 }}
+        viewport={{ once: true }}
+        className="text-sm sm:text-lg font-medium text-gray-500 dark:text-white/75 max-w-4/5 sm:max-w-lg pb-3"
+      >
         Creating meaningful connections and turning big ideas into interactive
         digital experiences.
-      </p>
+      </motion.p>
 
-      <div className="relative">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="relative"
+      >
         <Image
           src="/images/hero_img.png"
           height={500}
@@ -50,7 +75,7 @@ export default function Hero() {
           loading="eager"
           className="absolute -top-40 -right-40 sm:-top-100 sm:-right-70 -z-1 dark:hidden"
         />
-      </div>
+      </motion.div>
     </div>
   );
 }

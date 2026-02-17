@@ -1,6 +1,7 @@
 import React from "react";
 import Title from "./Title";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 interface WorkData {
   id: string | number;
@@ -32,7 +33,11 @@ export default function OurWork() {
   ];
 
   return (
-    <div
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ staggerChildren: 0.2 }}
       id="our-work"
       className="custom-container flex flex-col items-center gap-7 pt-20 md:pt-30 text-gray-700 dark:text-white relative"
     >
@@ -43,7 +48,11 @@ export default function OurWork() {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3  gap-6 w-full max-w-5xl">
         {workData.map((work, idx) => (
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: idx * 0.2 }}
+            viewport={{ once: true }}
             key={idx}
             className="hover:scale-102 duration-500 transition-all cursor-pointer"
           >
@@ -59,9 +68,9 @@ export default function OurWork() {
 
             <h3 className="font-bold mt-3 mb-2 text-lg">{work.title}</h3>
             <h3 className="text-sm opacity-60 w-5/6">{work.desc}</h3>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }

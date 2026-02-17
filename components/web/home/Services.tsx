@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Title from "./Title";
 import ServiceCard from "./ServiceCard";
+import { motion } from "motion/react";
 
 interface ServicesData {
   id: number;
@@ -42,7 +43,11 @@ export default function Services() {
   ];
 
   return (
-    <div
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ staggerChildren: 0.2 }}
       id="services"
       className="custom-container flex flex-col items-center gap-7 pt-20 md:pt-30 text-gray-700 dark:text-white relative"
     >
@@ -66,6 +71,6 @@ export default function Services() {
           <ServiceCard key={idx} service={service} index={idx} />
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
