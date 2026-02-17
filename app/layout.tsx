@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import toast, { Toaster } from "react-hot-toast";
+import CustomCursor from "@/components/web/shared/CustomCursor";
 
 const manRope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={manRope.className}>
         <Toaster />
         {children}
+        <CustomCursor />
       </body>
     </html>
   );
